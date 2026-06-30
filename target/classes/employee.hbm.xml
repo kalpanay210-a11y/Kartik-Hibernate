@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+
+   <class name="com.hbn.entity.Employee" table="emp">
+   
+      <id name="emp_id" column="emp_id"><generator class="identity"></generator></id>
+      
+      <property name="emp_name" column="emp_name"></property>
+      <property name="emp_gender" column="emp_gender"></property>
+      <property name="emp_salary" column="emp_salary"></property>
+      <property name="emp_address" column="emp_address"></property>
+      
+   </class>
+
+</hibernate-mapping>
+    
