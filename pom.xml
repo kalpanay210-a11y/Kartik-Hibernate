@@ -22,5 +22,10 @@
     <version>7.2.0.Final</version>
 </dependency>
 
+   	<dependency>
+   		<groupId>com.hbn.learn</groupId>
+   		<artifactId>Kalpana-Hibernate</artifactId>
+   		<version>0.0.1-SNAPSHOT</version>
+   	</dependency>
    </dependencies>
 </project>
