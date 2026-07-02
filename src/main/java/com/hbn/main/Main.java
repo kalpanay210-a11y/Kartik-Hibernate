@@ -12,16 +12,22 @@ public class Main {
     public static void main(String[] args) {
         
         
-        Employee emp = new Employee("Aman", "Male", "HYD", 25000);
+        Employee emp1 = new Employee("Aman", "Male", "HYD", 25000);
+        
         
         Session session = HibernateConfig.getsessionFactory().openSession();
         
         Transaction tx = session.beginTransaction();
         
-        session.persist(emp);
+        session.load(emp1, 3);
+        
+        System.out.println(emp1);
+        
+//        Employee employee = session.get(Employee.class, 3);
+//        
+//        System.out.println(employee);
         
         tx.commit();
         
-        System.out.println("🎉 Data successfully saved without any error!");
     }
 }

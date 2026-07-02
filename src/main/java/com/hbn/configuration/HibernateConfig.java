@@ -19,7 +19,7 @@ public class HibernateConfig{
 			properties.put(Environment.JAKARTA_JDBC_URL, "jdbc:mysql://localhost:3306/mydb");
 			properties.put(Environment.JAKARTA_JDBC_USER, "root");
 			properties.put(Environment.JAKARTA_JDBC_PASSWORD, "root@123");
-			properties.put(Environment.HBM2DDL_AUTO, "create");
+			properties.put(Environment.HBM2DDL_AUTO, "update");
 			properties.put(Environment.SHOW_SQL, "true");
 			properties.put(Environment.FORMAT_SQL, "true");
 			
