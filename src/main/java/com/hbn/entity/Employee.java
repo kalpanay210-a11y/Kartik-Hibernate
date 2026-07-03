@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
 
 @NamedQuery(
 		name = "findById",
@@ -24,6 +25,10 @@ public class Employee{
 	private String emp_gender;
 	private String emp_address;
 	private int emp_salary;
+	
+	@OneToOne
+	private Address address;
+	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -36,6 +41,7 @@ public class Employee{
 		this.emp_gender = emp_gender;
 		this.emp_address = emp_address;
 		this.emp_salary = emp_salary;
+		this.address = address;
 	}
 
 
@@ -70,11 +76,18 @@ public class Employee{
 		this.emp_address = emp_address;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+	
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	@Override
 	public String toString() {
 		return "Employee [emp_id=" + emp_id + ", emp_name=" + emp_name + ", emp_gender=" + emp_gender + ", emp_address="
-				+ emp_address + ", emp_salary=" + emp_salary + "]";
+				+ emp_address + ", emp_salary=" + emp_salary + ", Address= "+ address +"]";
 	}
 
 	
