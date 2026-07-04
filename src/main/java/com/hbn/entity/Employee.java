@@ -1,5 +1,7 @@
 package com.hbn.entity;
 
+import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +28,7 @@ public class Employee{
 	private String emp_address;
 	private int emp_salary;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	
 	public Employee() {
@@ -35,7 +37,7 @@ public class Employee{
 	}
 	
 	
-	public Employee(String emp_name, String emp_gender, String emp_address, int emp_salary) {
+	public Employee(String emp_name, String emp_gender, String emp_address, int emp_salary, Address address) {
 		super();
 		this.emp_name = emp_name;
 		this.emp_gender = emp_gender;
@@ -89,6 +91,7 @@ public class Employee{
 		return "Employee [emp_id=" + emp_id + ", emp_name=" + emp_name + ", emp_gender=" + emp_gender + ", emp_address="
 				+ emp_address + ", emp_salary=" + emp_salary + ", Address= "+ address +"]";
 	}
+
 
 	
 	
