@@ -1,5 +1,7 @@
 package com.hbn.entity;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 
 import jakarta.persistence.Entity;
@@ -7,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @NamedQuery(
@@ -28,8 +31,8 @@ public class Employee{
 	private String emp_address;
 	private int emp_salary;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Address address;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Address> address;
 	
 	public Employee() {
 		super();
@@ -37,13 +40,12 @@ public class Employee{
 	}
 	
 	
-	public Employee(String emp_name, String emp_gender, String emp_address, int emp_salary, Address address) {
+	public Employee(String emp_name, String emp_gender, String emp_address, int emp_salary) {
 		super();
 		this.emp_name = emp_name;
 		this.emp_gender = emp_gender;
 		this.emp_address = emp_address;
 		this.emp_salary = emp_salary;
-		this.address = address;
 	}
 
 
@@ -78,23 +80,21 @@ public class Employee{
 		this.emp_address = emp_address;
 	}
 
-	public Address getAddress() {
+	public List<Address> getAddress() {
 		return address;
 	}
-	
-	public void setAddress(Address address) {
+
+	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
+
 
 	@Override
 	public String toString() {
 		return "Employee [emp_id=" + emp_id + ", emp_name=" + emp_name + ", emp_gender=" + emp_gender + ", emp_address="
-				+ emp_address + ", emp_salary=" + emp_salary + ", Address= "+ address +"]";
+				+ emp_address + ", emp_salary=" + emp_salary + ", address=" + address + "]";
 	}
 
 
 	
-	
-	
-	
-}
+	}

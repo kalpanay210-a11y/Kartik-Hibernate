@@ -14,20 +14,17 @@ public class Address {
 	private int add_id;
 	private String city, state;
 	
-	@OneToOne(mappedBy = "address")
-	private Employee employee;
 	
 	public Address() {
 		super();
 	}
 	
-	public Address(int add_id, String city, String state, Employee employee) {
+	public Address(int add_id, String city, String state) {
 		
 		super();
 		this.add_id = add_id;
 		this.city = city;
 		this.state = state;
-		this.employee = employee;
 	}
 	
 	public int getAddId() {
@@ -54,14 +51,6 @@ public class Address {
 		this.state = state;
 	}
 	
-	public Employee getEmployee() {
-		return employee;
-	}
-	
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
 	@Override
 	public String toString() {
 		return "Address [add_id=" + add_id + ", city=" + city + ", state=" + state + "]";
