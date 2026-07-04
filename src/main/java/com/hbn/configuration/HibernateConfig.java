@@ -1,24 +1,38 @@
 package com.hbn.configuration;
 
+import java.util.Properties;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Environment;
 
-public class HibernateConfig {
-	
-	
-	
-	public static SessionFactory getSessionFactory()
-	{
+public class HibernateConfig{
 		
-		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-		
-		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
-		
-		return meta.buildSessionFactory();
-//		return new Configuration().configure("hibernate.cfg1.xml").buildSessionFactory();
-	}
+		public static SessionFactory getsessionFactory() {
+			
+			Properties properties = new Properties();
+			
+			properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+			properties.put(Environment.JAKARTA_JDBC_URL, "jdbc:mysql://localhost:3306/mydb");
+			properties.put(Environment.JAKARTA_JDBC_USER, "root");
+			properties.put(Environment.JAKARTA_JDBC_PASSWORD, "root@123");
+			properties.put(Environment.HBM2DDL_AUTO, "create");
+			properties.put(Environment.SHOW_SQL, "true");
+			properties.put(Environment.FORMAT_SQL, "true");
+			
+			
+			
+			
+			StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(properties).build();
+			
+			Metadata meta = new MetadataSources(ssr).addAnnotatedClasses(com.hbn.entity.Employee.class, com.hbn.entity.Address.class).getMetadataBuilder().build();
+//					getMetadataBuilder().build();
+			
+			return meta.buildSessionFactory();
+			
+		}
 
 }
