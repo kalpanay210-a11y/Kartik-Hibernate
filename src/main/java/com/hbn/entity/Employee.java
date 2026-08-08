@@ -8,19 +8,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@NamedQuery(
-		name = "findById",
-		query = "FROM Employee E WHERE E.id >: id"
-		)
 
-@NamedQuery(
-		name = "findByGender",
-		query = "select e FROM Employee e WHERE e.emp_gender =:gender")
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee{
 	
 	@Id
@@ -31,70 +29,8 @@ public class Employee{
 	private String emp_address;
 	private int emp_salary;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "add_id")
 	private List<Address> address;
-	
-	public Employee() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	public Employee(String emp_name, String emp_gender, String emp_address, int emp_salary) {
-		super();
-		this.emp_name = emp_name;
-		this.emp_gender = emp_gender;
-		this.emp_address = emp_address;
-		this.emp_salary = emp_salary;
-	}
-
-
-	public int getEmp_id() {
-		return emp_id;
-	}
-	public void setEmp_id(int emp_id) {
-		this.emp_id = emp_id;
-	}
-	public int getEmp_salary() {
-		return emp_salary;
-	}
-	public void setEmp_salary(int emp_salary) {
-		this.emp_salary = emp_salary;
-	}
-	public String getEmp_name() {
-		return emp_name;
-	}
-	public void setEmp_name(String emp_name) {
-		this.emp_name = emp_name;
-	}
-	public String getEmp_gender() {
-		return emp_gender;
-	}
-	public void setEmp_gender(String emp_gender) {
-		this.emp_gender = emp_gender;
-	}
-	public String getEmp_address() {
-		return emp_address;
-	}
-	public void setEmp_address(String emp_address) {
-		this.emp_address = emp_address;
-	}
-
-	public List<Address> getAddress() {
-		return address;
-	}
-
-	public void setAddress(List<Address> address) {
-		this.address = address;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Employee [emp_id=" + emp_id + ", emp_name=" + emp_name + ", emp_gender=" + emp_gender + ", emp_address="
-				+ emp_address + ", emp_salary=" + emp_salary + ", address=" + address + "]";
-	}
-
-
 	
 	}

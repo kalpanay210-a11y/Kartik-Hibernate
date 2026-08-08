@@ -34,12 +34,8 @@ public class Main {
 	        listOfAdd.add(add2);
 	        listOfAdd.add(add3);
 	        
-	        Employee emp1 = new Employee();
+	        Employee emp1 = new Employee("Sarita", "Female", 2400, 3434);
 	        
-	        emp1.setEmp_name("Rehan");
-	        emp1.setEmp_gender("Male");
-	        emp1.setEmp_salary(30000);
-	        emp1.setAddress(listOfAdd);
 	        
 	        Transaction tx = session.beginTransaction();
 	     
